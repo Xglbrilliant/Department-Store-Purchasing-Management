@@ -1,4 +1,4 @@
-# project01
+# Department-Store-Purchasing-Management
 ## This is a department store wholesale procurement management system implemented using vue family bucket, element, echarts, etc.Its interface is written using express.
 
 ```
