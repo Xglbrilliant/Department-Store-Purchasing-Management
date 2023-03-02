@@ -1,14 +1,13 @@
 # project01
+## This is a department store wholesale procurement management system implemented using vue family bucket, element, echarts, etc.Its interface is written using express.
 
-## Project setup
 ```
+// Project setup
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
+// Compiles and hot-reloads for development
 npm run serve
 ```
+
 
 ### environment 
 
