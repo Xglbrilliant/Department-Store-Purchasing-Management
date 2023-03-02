@@ -1,6 +1,6 @@
 <template>
   <div class=''>
-    <h3>产品列表</h3>
+    <h3>订单审核</h3>
   </div>
 </template>
 <script>
