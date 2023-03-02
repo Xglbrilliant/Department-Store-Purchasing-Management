@@ -4,7 +4,7 @@ const router = express.Router();
 const sqlFn = require("./mysql");
 
 //图片需要的模块
-const multer = require('multer')
+const multer = require('multer') 
 const fs = require('fs')
 
 //路由---接口地址

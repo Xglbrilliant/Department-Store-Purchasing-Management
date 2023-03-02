@@ -5,7 +5,7 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 //资源共享---只有打包的时候再去共享资源 研发共享
 // const cors = require('cors')
-// app.use(cors())
+// app.use(cors()) 
 
 
 //路由--产品

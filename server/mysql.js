@@ -7,7 +7,7 @@ const client = mysql.createConnection({
     password: '', //数据库密码 xampp集成
     database: 'project',
     // port:'3306'
-})
+}) 
 
 //封装数据库操作语句 sql语句 参数数组arr  callback成功函数结果
 function sqlFun(sql, arr,callback) {
