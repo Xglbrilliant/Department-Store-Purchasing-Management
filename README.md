@@ -20,6 +20,7 @@ npm i -axios -S
 npm i querystring -S
 npm i normalize.css -S
 npm i echarts -S
+npm i express mysql -S
 ```
 
 
