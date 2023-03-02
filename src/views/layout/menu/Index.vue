@@ -2,8 +2,16 @@
   <div>
     <!-- router属性表示开启路由跳转，将index变成path，default-active="/"表示默认某个页面开启 -->
     <!-- 动态绑定default-active使得无论点击哪个导航都会有高亮展示 -->
-    <el-menu :default-active="$route.path" class="el-menu-vertical-demo" background-color="#112f50"
-      text-color="#fff" active-text-color="#ffd04b" router :collapse="isCollapse">
+    <!-- $route.path会获得url上的地址 -->
+    <el-menu
+      :default-active="$route.path"
+      class="el-menu-vertical-demo"
+      background-color="#112f50"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      router
+      :collapse="isCollapse"
+    >
       <el-menu-item>
         <span slot="title">万民百货采购管理系统</span>
       </el-menu-item>
@@ -13,7 +21,7 @@
         <span slot="title">首页</span>
       </el-menu-item>
 
-      <el-submenu index="1">
+      <el-submenu index="/product">
         <template slot="title">
           <i class="el-icon-s-operation"></i>
           <span>产品管理</span>
@@ -30,7 +38,7 @@
         </el-menu-item-group>
       </el-submenu>
 
-      <el-submenu index="2">
+      <el-submenu index="/order">
         <template slot="title">
           <i class="el-icon-position"></i>
           <span>订单管理</span>
@@ -48,17 +56,25 @@
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group>
-          <el-menu-item index="/order/list">
+          <el-menu-item index="/order/order-list">
             <i class="el-icon-s-grid"></i>
             <span>订单列表</span>
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
 
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
+      <el-submenu index="/advert">
+        <template slot="title">
+          <i class="el-icon-document"></i>
+          <span>广告管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/advert/advert-list">
+            <i class="el-icon-grape"></i>
+            <span>广告列表</span>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
 
       <el-menu-item index="4">
         <i class="el-icon-setting"></i>
@@ -69,7 +85,7 @@
 </template>
 <script>
 export default {
-  props: ['isCollapse'],
+  props: ["isCollapse"],
   components: {},
   data() {
     return {

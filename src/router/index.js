@@ -47,12 +47,24 @@ const routes = [
             component: () => import('@/views/order/contract/Index.vue')
           },
           {
-            path: 'list',
-            name: 'list',
+            path: 'order-list',
+            name: 'orderList',
             component: () => import('@/views/order/list/Index.vue')
           },
         ]
-      }
+      },
+      {
+        path: '/advert',
+        name: 'advert',
+        component: () => import('@/views/advert/Index.vue'),
+        children: [
+          {
+            path: 'advert-list',
+            name: 'advertList',
+            component: () => import('@/views/advert/list/Index.vue')
+          },
+        ]
+      },
     ]
   },
   {
