@@ -276,7 +276,7 @@ export default {
               borderRadius: 0,
             },
             data: pieData,
-            emphasis: {//高亮配置
+            emphasis: {//高亮配置 
               itemStyle: {
                 shadowBlur: 10,
                 shadowOffsetX: 0,
