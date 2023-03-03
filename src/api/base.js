@@ -4,8 +4,8 @@
 const base ={
     //首页
     totalInfo:'/api/home/dataCount',//首页统计数据
-    // orderinfo:"/api/home/orderinfo",//订单数据
-    // format:"/api/home/format",//折线数据
+    orderinfo:"/api/home/orderinfo",//订单数据
+    format:"/api/home/format",//折线数据
     //打包
     // totalInfo:api+'/home/dataCount',//首页统计数据
     // orderinfo:api+"/home/orderinfo",//订单数据
