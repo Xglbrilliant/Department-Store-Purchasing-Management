@@ -26,5 +26,3 @@ npm i mockjs -S
 
 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
