@@ -9,7 +9,9 @@
       </div>
     </div>
     <!-- 内容 -->
-    <router-view></router-view>
+    <div class="wrapper">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
@@ -48,5 +50,8 @@ export default {
       cursor: pointer;
     }
   }
+}
+.wrapper {
+  padding: 20px;
 }
 </style>

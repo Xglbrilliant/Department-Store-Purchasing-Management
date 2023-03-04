@@ -301,9 +301,10 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.home {
-  margin: 30px 10px;
-}
+// content/index中内容部分设置了padding，这里再设置间距就太大了
+// .home {
+//   margin: 30px 10px;
+// }
 .header {
   display: flex;
   padding-right: 30px;
