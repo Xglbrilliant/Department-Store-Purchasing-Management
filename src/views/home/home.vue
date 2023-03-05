@@ -107,27 +107,29 @@ export default {
   },
   created() {
     // console.log('mounted-id', document.getElementById('charts'));  //null
+    console.log(123);
     this.totalInfo();
     this.orderinfo();
     this.format();
   },
   mounted() {
+    // console.log(this);
+    
     //最早获取DOM元素的生命周期函数 挂载完毕
     // console.log('mounted-id', document.getElementById('charts'));
     // this.line();
     //带参数就error 
-    // 原因猜测：此时仅仅只读取到了同步函数，但是并未读取到方法中的异步函数，所以无法获得异步函数中传出的参数值？？？right or false??
     // this.line2(arrX, yarr1, yarr2);  
     // this.pie(pieData);  //带参数就error
   },
   methods: {
-    //获取数据统计
     async totalInfo() {
       let res = await this.$api.totalInfo();
+      console.log('res',res);
       // console.log('首页统计信息', res.data.data.list);
       this.totalData = res.data.data.list;
+      // console.log('total');
     },
-    //获取今日订单统计信息
     async orderinfo() {
       let res = await this.$api.orderinfo();
       // console.log('获取今日订单统计信息', res.data)
@@ -137,7 +139,6 @@ export default {
     async format() {
       let res = await this.$api.format();
       // console.log(res.data);
-      // console.log('获取图表动态数据----',res.data.result.data.sale_money);
       let arr = res.data.result.data.sale_money, arrX = [], yarr1 = [], yarr2 =[];  
       let pieData = [];  
       arr.forEach(item => {
@@ -146,12 +147,10 @@ export default {
         yarr1.push(item.num);
         yarr2.push(item.total_amount);
         //饼状图的数据
-        let obj = {};  //注意作用域，这个obj不能放在arr.forEach()外面
+        let obj = {}; 
         obj.name = item.name;
         obj.value = item.total_amount;
-        // console.log(obj);
         pieData.push(obj);
-        // console.log(pieData);
       });
       this.line2(arrX, yarr1, yarr2);
       this.pie(pieData);
