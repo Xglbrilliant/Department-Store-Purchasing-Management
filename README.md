@@ -23,7 +23,7 @@ npm i express mysql -S
 npm i multer -S
 npm i mockjs -S
 npm i moment -S  //javascript time library
-npm i dayjs -S
+npm i dayjs -S 
 ```
 
 
