@@ -9,6 +9,10 @@ const base ={
     //产品管理
     projectList: "/api/goods/projectList",//产品列表
     search: "/api/goods/search",//搜索接口
+    deleteItemById: "/api/goods/deleteItemById",//删除商品操作
+    //商品类目
+    selectItemCategoryByParentId: "/api/goods/itemCategory/selectItemCategoryByParentId",
+
 
     //打包
     // totalInfo:api+'/home/dataCount',//首页统计数据

@@ -107,7 +107,6 @@ export default {
   },
   created() {
     // console.log('mounted-id', document.getElementById('charts'));  //null
-    console.log(123);
     this.totalInfo();
     this.orderinfo();
     this.format();
@@ -125,7 +124,7 @@ export default {
   methods: {
     async totalInfo() {
       let res = await this.$api.totalInfo();
-      console.log('res',res);
+      // console.log('res',res);
       // console.log('首页统计信息', res.data.data.list);
       this.totalData = res.data.data.list;
       // console.log('total');
@@ -136,7 +135,7 @@ export default {
       this.orderData = res.data.list;
     },
     //获取图表动态数据
-    async format() {
+    async format() { 
       let res = await this.$api.format();
       // console.log(res.data);
       let arr = res.data.result.data.sale_money, arrX = [], yarr1 = [], yarr2 =[];  

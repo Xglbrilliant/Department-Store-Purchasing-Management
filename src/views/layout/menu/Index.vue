@@ -2,9 +2,8 @@
   <div>
     <!-- router属性表示开启路由跳转，将index变成path，default-active="/"表示默认某个页面开启 -->
     <!-- 动态绑定default-active使得无论点击哪个导航都会有高亮展示 -->
-    <!-- $route.path会获得url上的地址 -->
-    <el-menu
-      :default-active="$route.path"
+    <!-- :default-active="$route.path"中$route.path会获得url上的地址 -->
+    <el-menu :default-active="active"
       class="el-menu-vertical-demo"
       background-color="#112f50"
       text-color="#fff"
@@ -90,9 +89,30 @@ export default {
   data() {
     return {
       // isCollapse:false
+      active: ''
     };
   },
-  methods: {},
+  created() {
+    // console.log('menu', this.$route);
+    if (this.$route.meta.activeMenu) {
+      this.active = this.$route.meta.activeMenu
+    } else {
+      this.active = this.$route.path
+    }
+  },
+  watch: {
+    $route(to, from) {
+      // console.log('watch', to);
+      let { meta, path } = to;
+      // console.log(meta);
+      // console.log(name);
+      if(meta.activeMenu) {
+        this.active = meta.activeMenu;
+      }else {
+        this.active = path;
+      }
+    }
+  }
 };
 </script>
 <style lang='less' scoped>

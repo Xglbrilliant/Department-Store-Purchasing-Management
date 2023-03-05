@@ -29,6 +29,14 @@ const routes = [
             name: 'category',
             component: () => import('@/views/product/category/Index.vue')
           },
+          {
+            path: 'add-product',  //商品添加-编辑-查看
+            name: 'ProductPage',
+            component: () => import('@/views/product/list/AddProduct.vue'),
+            meta: {  //配置高亮标识
+              activeMenu: '/product/list'
+            }
+          },
         ]
       },
       {

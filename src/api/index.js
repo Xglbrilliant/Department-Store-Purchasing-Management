@@ -35,6 +35,16 @@ const api = {
     return axios.get(base.search, { params });
   },
 
+  // 删除接口 params={search=xxx}
+  deleteItemById(params) {
+    return axios.get(base.deleteItemById, { params });
+  },
+
+  //商品类目  params={type: cid}
+  selectItemCategoryByParentId(params) {
+    return axios.get(base.selectItemCategoryByParentId, { params });
+  },
+
   // /* 
   //   订单列表
   // */
