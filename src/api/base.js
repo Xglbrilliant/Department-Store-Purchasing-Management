@@ -6,6 +6,10 @@ const base ={
     totalInfo:'/api/home/dataCount',//首页统计数据
     orderinfo:"/api/home/orderinfo",//订单数据
     format:"/api/home/format",//折线数据
+    //产品管理
+    projectList: "/api/goods/projectList",//产品列表
+    search: "/api/goods/search",//搜索接口
+
     //打包
     // totalInfo:api+'/home/dataCount',//首页统计数据
     // orderinfo:api+"/home/orderinfo",//订单数据

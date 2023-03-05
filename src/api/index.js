@@ -25,6 +25,16 @@ const api = {
   //产品信息接口---
   // ...product,
   
+  // 产品列表 Page
+  projectList(params) {
+    return axios.get(base.projectList, { params });
+  },
+
+  // 搜索接口 params={search=xxx}
+  search(params) {
+    return axios.get(base.search, { params });
+  },
+
   // /* 
   //   订单列表
   // */
@@ -58,7 +68,7 @@ const api = {
   // getDetail(params) {
   //   return axios.get(base.detail, { params });
   // },
-  // //登录
+  //登录
   // login,
 
 
