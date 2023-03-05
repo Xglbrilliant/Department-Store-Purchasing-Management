@@ -1,6 +1,7 @@
 <template>
   <div class="">
-    <el-tree :props="props" :load="loadNode" lazy> </el-tree>
+    <el-tree :props="props" :load="loadNode" lazy @node-click="clickHandle">
+    </el-tree>
   </div>
 </template>
 <script>
@@ -12,7 +13,7 @@ export default {
         children: "zones",
         isLeaf: "leaf",
       },
-      treeData: [],
+      //   treeData: [],
     };
   },
   methods: {
@@ -28,7 +29,8 @@ export default {
       }
       if (node.level >= 1) {
         //请求--------
-        this.$api.selectItemCategoryByParentId({ type: node.data.cid })
+        this.$api
+          .selectItemCategoryByParentId({ type: node.data.cid })
           .then((res) => {
             if (res.data.status == 200) {
               return resolve(res.data.result);
@@ -37,6 +39,11 @@ export default {
             }
           });
       }
+    },
+    //点击tree的节点触发的事件--------------------
+    clickHandle(data, node) {
+    //   console.log('data',data,'node',node);
+      this.$emit("sendTreeData", data);
     },
   },
 };
