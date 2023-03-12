@@ -7,6 +7,8 @@ app.use(express.urlencoded({ extended: true }))
 // const cors = require('cors')
 // app.use(cors()) 
 
+//静态文件托管——————访问：http:localhost:7788/img.jpg
+app.use(express.static('upload'))
 
 //路由--产品
 const router = require('./router')

@@ -10,8 +10,11 @@ const base ={
     projectList: "/api/goods/projectList",//产品列表
     search: "/api/goods/search",//搜索接口
     deleteItemById: "/api/goods/deleteItemById",//删除商品操作
-    //商品类目
-    selectItemCategoryByParentId: "/api/goods/itemCategory/selectItemCategoryByParentId",
+    selectItemCategoryByParentId: "/api/goods/itemCategory/selectItemCategoryByParentId",//商品类目
+
+    //图片上传接口
+    uploadUrl: "/api/upload",
+
 
 
     //打包
@@ -29,8 +32,9 @@ const base ={
 }
 
 //单一导出
-export const host='xxx';
-//导出图片上传的url地址
-// export const uploadUrl='/api/upload';
+export const host='http://localhost:7788';
+
+// 导出图片上传的url地址
+export const uploadUrl='/api/upload';
 
 export default base
