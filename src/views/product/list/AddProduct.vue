@@ -34,6 +34,7 @@
             <el-input v-model="ruleForm.sellPoint" size="small"></el-input>
           </el-form-item>
           <el-form-item label="上传图片" prop="image">
+            <UploadImg></UploadImg>
             <!-- <UploadImg
               @sendImg="sendImg"
               ref="uploadImg"
@@ -87,13 +88,13 @@
 <script>
 // import { mapState } from "vuex";
 import TreeProduct from "./TreeProduct.vue";
-// import UploadImg from "./UploadImg.vue";
+import UploadImg from "./UploadImg.vue";
 // import WangEditor from "./WangEditor.vue";
 
 export default {
   components: {
     TreeProduct,
-    // UploadImg,
+    UploadImg,
     // WangEditor,
   },
   // computed: {
