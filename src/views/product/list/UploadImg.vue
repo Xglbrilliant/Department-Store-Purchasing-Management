@@ -53,6 +53,7 @@ export default {
         //上传成功-----------------------------
         handleSuccess(response, file, fileList){
             console.log('成功',response, file, fileList);
+            // console.log(response.url);  //eg:upload\1678632276227-image0.jpg
             //获取上传成功后的图片的地址 <img src=''/> http://localhost:7788/+相对路径
             let url = response.url.slice(7);
             let imgUrl = host+'/'+url
