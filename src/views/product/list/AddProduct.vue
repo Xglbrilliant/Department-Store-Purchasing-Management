@@ -11,13 +11,7 @@
     <el-col :span="20">
       <div class="wrapper">
         <div class="my-title">商品</div>
-        <el-form
-          :model="ruleForm"
-          :rules="rules"
-          ref="ruleForm"
-          label-width="100px"
-          class="demo-ruleForm"
-        >
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
           <el-form-item label="所属分类" prop="category">
             <span>{{ ruleForm.category }}</span>
           </el-form-item>
@@ -34,7 +28,7 @@
             <el-input v-model="ruleForm.sellPoint" size="small"></el-input>
           </el-form-item>
           <el-form-item label="上传图片" prop="image">
-            <UploadImg></UploadImg>
+            <UploadImg @sendImg="sendImg" ref="uploadImg"></UploadImg>
             <!-- <UploadImg
               @sendImg="sendImg"
               ref="uploadImg"
@@ -42,41 +36,20 @@
             ></UploadImg> -->
           </el-form-item>
           <el-form-item label="商品描述" prop="descs">
-            <!-- <WangEditor
-              @sendWangEditor="sendWangEditor"
-              ref="wangEditor"
-            ></WangEditor> -->
+            <WangEditor @sendWangEditor="sendWangEditor" ref="wangEditor"></WangEditor>
           </el-form-item>
           <el-form-item label="首页轮播推进" prop="isShow">
-            <el-switch
-              v-model="ruleForm.isShow"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
+            <el-switch v-model="ruleForm.isShow" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
           </el-form-item>
           <el-form-item label="是否推荐商品" prop="isShow">
-            <el-switch
-              v-model="ruleForm.isShow"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
+            <el-switch v-model="ruleForm.isShow" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
           </el-form-item>
           <el-form-item label="是否上架商品" prop="isShow">
-            <el-switch
-              v-model="ruleForm.isShow"
-              active-color="#13ce66"
-              inactive-color="#ff4949"
-            ></el-switch>
+            <el-switch v-model="ruleForm.isShow" active-color="#13ce66" inactive-color="#ff4949"></el-switch>
           </el-form-item>
-
           <el-form-item>
-            <el-button
-              type="primary"
-              >保存</el-button
-            >
-            <el-button 
-              >重置</el-button
-            >
+            <el-button type="primary" @click="submitForm('ruleForm')">添加</el-button>
+            <el-button @click="resetForm('ruleForm')">重置</el-button>
             <el-button @click="closePage">取消</el-button>
           </el-form-item>
         </el-form>
@@ -89,13 +62,13 @@
 // import { mapState } from "vuex";
 import TreeProduct from "./TreeProduct.vue";
 import UploadImg from "./UploadImg.vue";
-// import WangEditor from "./WangEditor.vue";
+import WangEditor from "./WangEditor.vue";
 
 export default {
   components: {
     TreeProduct,
     UploadImg,
-    // WangEditor,
+    WangEditor,
   },
   // computed: {
   //   ...mapState("product", ["rowData", "title"]),
@@ -146,76 +119,62 @@ export default {
     };
   },
   methods: {
-    //点击取消按钮
+    //点击取消按钮->返回商品列表页面
     closePage() {
       this.$router.push("/product/list");
     },
-    //获取tree点击的数据--------------------------、
+    //获取tree点击的数据
     sendTreeData(val) {
       //存储接受的tree的数据 val={id:,cid:,name:''}
       this.ruleForm.category = val.name;
       this.ruleForm.cid = val.cid;
     },
-    //接受上传的图片路径----------------------
-    // sendImg(val) {
-    //   // console.log('val-----',val);
-    //   this.ruleForm.image.push(val);
-    // },
-    //获取富文本编译器的数据---------------------------、
-    // sendWangEditor(val) {
-    //   console.log("---商品描述--", val);
-    //   this.ruleForm.descs = val;
-    // },
-    //提交事件-------------------------------
-    // submitForm(formName) {
-    //   //this.$refs.ruleForm
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       //接口：title, image, sellPoint, price, cid, category, num, descs
-    //       let {
-    //         id,
-    //         title,
-    //         image,
-    //         sellPoint,
-    //         price,
-    //         cid,
-    //         category,
-    //         num,
-    //         descs,
-    //       } = this.ruleForm;
-    //       if (this.title == "添加") {
-    //         console.log("添加商品", this.ruleForm, image);
-    //         //image数组类型---转---字符串
-    //         this.insertTbItem({
-    //           title,
-    //           image: JSON.stringify(image),
-    //           sellPoint,
-    //           price,
-    //           cid,
-    //           category,
-    //           num,
-    //           descs,
-    //         });
-    //       } else {
-    //         console.log("修改商品---", this.ruleForm, "-------------", image);
-    //         this.updateTbItem({
-    //           id,
-    //           title,
-    //           image: JSON.stringify(image),
-    //           sellPoint,
-    //           price,
-    //           cid,
-    //           category,
-    //           num,
-    //           descs,
-    //         });
-    //       }
-    //     } else {
-    //       console.log("error submit!!");
-    //       return false;
-    //     }
-    //   });
-    // },
+    //接受上传的图片路径
+    sendImg(val) {
+      // console.log('val-----',val);
+      this.ruleForm.image.push(val);
+    },
+    //获取富文本编译器的数据
+    sendWangEditor(val) {
+      // console.log("---商品描述--", val);
+      this.ruleForm.descs = val;
+    },
+    //提交事件
+    submitForm(formName) {
+      //this.$refs.ruleForm
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          // console.log("添加商品", this.ruleForm);
+          //接口：title, image, sellPoint, price, cid, category, num, descs  解构赋值 
+          let {id,title,image,sellPoint,price,cid,category,num,descs} = this.ruleForm;
+          this.insertTbItem({title,image: JSON.stringify(image),sellPoint,price,cid,category,num,descs});
+          // if (this.title == "添加") {
+          //   console.log("添加商品", this.ruleForm, image);
+          //   //image是数组类型--->使用JSON.stringify()方法转字符串(接口要求)
+          //   this.insertTbItem({title,image: JSON.stringify(image),sellPoint,price,cid,category,num,descs});
+          // } else {
+          //   // console.log("修改商品---", this.ruleForm, "-------------", image);
+          //   // this.updateTbItem({id,title,image: JSON.stringify(image),sellPoint,price,cid,category,num,descs});
+          // }
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    //添加商品
+    async insertTbItem(params) {
+      let res = await this.$api.insertTbItem(params);
+      console.log("添加商品--------", res.data);
+      if (res.data.status === 200) {
+        this.$message({
+          message: "恭喜你，添加商品成功",
+          type: "success",
+        });
+        //添加商品成功后跳转路由返回到商品列表页面
+        this.$router.push("/product/list");
+      }
+    },
     //修改商品----------------------------------
     // async updateTbItem(params) {
     //   let res = await this.$api.updateTbItem(params);
@@ -229,50 +188,41 @@ export default {
     //     this.$router.push("/product/list");
     //   }
     // },
-    //添加商品---------------------------
-    // async insertTbItem(params) {
-    //   let res = await this.$api.insertTbItem(params);
-    //   console.log("添加商品--------", res.data);
-    //   if (res.data.status === 200) {
-    //     this.$message({
-    //       message: "恭喜你，添加商品成功",
-    //       type: "success",
-    //     });
-    //     //跳转路由
-    //     this.$router.push("/product/list");
-    //   }
-    // },
-    //重置------------------------------
-    // resetForm(formName) {
-    //   if (this.title == "添加") {
-    //     this.$refs[formName].resetFields();
-    //     //图片列表
-    //     this.$refs.uploadImg.clear();
-    //     //wangEditor
-    //     this.$refs.wangEditor.html = ""; //方法1
-    //     // this.$refs.wangEditor.editor.clear();//方法2 调用自身的清空方法
-    //   } else {
-    //     //编辑界面--点击重置--------------
-    //     //思路：1. 恢复之前的默认的值  2. 默认值来自vuex  rowData-注意-界面修改的数据不能是rowData
-    //     console.log("编辑界面---this.ruleForm---", this.ruleForm);
-    //     console.log("编辑界面---this.rowData---", this.rowData);
-    //     let rowData = JSON.parse(JSON.stringify(this.rowData));
-    //     this.ruleForm = rowData;
-    //     this.ruleForm.isShow = true;
-    //     let imgs = rowData.image; //字符串类型---需要转数组格式
-    //     let arr = JSON.parse(imgs); //转数组
-    //     console.log("---arr---", arr);
-    //     this.ruleForm.image = arr;
-    //     // console.log('arr---', arr);
-    //     this.fileList = [];
-    //     arr.forEach((ele) => {
-    //       this.fileList.push({ name: "", url: ele }); //fileList 回显图片--传递给UploadImg组件
-    //     });
-    //     this.$nextTick(() => {
-    //       this.$refs.wangEditor.html = rowData.descs;
-    //     });
-    //   }
-    // },
+    //重置
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+      this.$refs.uploadImg.clear();  //清空图片列表
+      this.$refs.wangEditor.editor.clear();  //清空文本编辑内容方法一：（clear是wangEditor自带的方法）
+      // this.$refs.wangEditor.html='';  //清空文本编辑内容方法二：设置文本内容为空
+      // if (this.title == "添加") {
+      //   this.$refs[formName].resetFields();
+      //   //图片列表
+      //   this.$refs.uploadImg.clear();
+      //   //wangEditor
+      //   this.$refs.wangEditor.html = ""; //方法1
+      //   // this.$refs.wangEditor.editor.clear();//方法2 调用自身的清空方法
+      // } else {
+      //   //编辑界面--点击重置--------------
+      //   //思路：1. 恢复之前的默认的值  2. 默认值来自vuex  rowData-注意-界面修改的数据不能是rowData
+      //   console.log("编辑界面---this.ruleForm---", this.ruleForm);
+      //   console.log("编辑界面---this.rowData---", this.rowData);
+      //   let rowData = JSON.parse(JSON.stringify(this.rowData));
+      //   this.ruleForm = rowData;
+      //   this.ruleForm.isShow = true;
+      //   let imgs = rowData.image; //字符串类型---需要转数组格式
+      //   let arr = JSON.parse(imgs); //转数组
+      //   console.log("---arr---", arr);
+      //   this.ruleForm.image = arr;
+      //   // console.log('arr---', arr);
+      //   this.fileList = [];
+      //   arr.forEach((ele) => {
+      //     this.fileList.push({ name: "", url: ele }); //fileList 回显图片--传递给UploadImg组件
+      //   });
+      //   this.$nextTick(() => {
+      //     this.$refs.wangEditor.html = rowData.descs;
+      //   });
+      // }
+    },
   },
   // mounted() {
   //   //进入页面--渲染编辑的数据
