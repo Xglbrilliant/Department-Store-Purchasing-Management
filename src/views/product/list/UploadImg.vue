@@ -25,6 +25,7 @@
             :on-success="handleSuccess"
             :file-list="fileList"
             ref="upload"
+            :auto-upload="false"
             multiple>
             <i class="el-icon-plus"></i>
         </el-upload>
@@ -50,7 +51,7 @@ export default {
         };
     },
     methods: {
-        //上传成功-----------------------------
+        //上传成功
         handleSuccess(response, file, fileList){
             console.log('成功',response, file, fileList);
             // console.log(response.url);  //eg:upload\1678632276227-image0.jpg
@@ -67,7 +68,7 @@ export default {
             this.dialogImageUrl = file.url;
             this.dialogVisible = true;
         },
-        //清空图片列表展示---------------
+        //清空图片列表展示
         clear(){
             // console.log('清空图片列表展示-------');
             // this.fileList=[]

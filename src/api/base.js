@@ -14,6 +14,7 @@ const base ={
 
     //图片上传接口
     uploadUrl: "/api/upload",
+    insertTbItem: "/api/goods/item/insertTbItem",//添加商品
 
 
 

@@ -32,7 +32,7 @@ export default {
             this.editor = Object.seal(editor) // 一定要用 Object.seal() ，否则会报错
         },
         onChange() {
-            console.log('监听-修改', this.html);
+            // console.log('监听-修改', this.html);
             //发送给父组件---- 把wangEditor用户输入的商品描述--发送-商品添加存储
             this.$emit('sendWangEditor', this.html)
         }

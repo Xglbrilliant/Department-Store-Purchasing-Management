@@ -45,6 +45,11 @@ const api = {
     return axios.get(base.selectItemCategoryByParentId, { params });
   },
 
+  //添加商品  parms={title, image, sellPoint, price, cid, category, num, descs, paramsInfo}
+  insertTbItem(params) {
+    return axios.get(base.insertTbItem, { params });
+  },
+
   // /* 
   //   订单列表
   // */

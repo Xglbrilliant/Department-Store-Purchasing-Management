@@ -1,5 +1,5 @@
 # Department-Store-Purchasing-Management
-## This is a department store wholesale procurement management system implemented using vue family bucket, element, echarts, etc.Its interface is written using express.
+## This is a department store wholesale procurement management system implemented using vue family bucket, element, echarts, WangEditor， etc.Its interface is written using express.
 
 ```
 // Project setup
@@ -24,6 +24,8 @@ npm i multer -S
 npm i mockjs -S
 npm i moment -S  //javascript time library
 npm i dayjs -S 
+npm install @wangeditor/editor --save
+npm install @wangeditor/editor-for-vue --save
 ```
 
 
