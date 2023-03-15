@@ -50,6 +50,11 @@ const api = {
     return axios.get(base.insertTbItem, { params });
   },
 
+  //批量删除  {ids:字符串--id}
+  batchDelete(params) {
+    return axios.get(base.batchDelete, { params });
+  },
+
   // /* 
   //   订单列表
   // */
