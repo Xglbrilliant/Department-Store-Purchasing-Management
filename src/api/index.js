@@ -4,21 +4,15 @@ import axios from "@/utils/request";
 // import {login,permission} from './login/login'
 // import product from './product'
 const api = {
-  /* 
-        首页数据统计
-    */
+  /* 首页数据统计 */
   totalInfo() {
     return axios.get(base.totalInfo);
   },
-  /* 
-    首页订单数据
-  */
+  /*  首页订单数据 */
   orderinfo() {
     return axios.get(base.orderinfo);
   },
-  /* 
-      图表数据
-    */
+  /*  图表数据 */
   format() {
     return axios.get(base.format);
   },
@@ -59,6 +53,12 @@ const api = {
   updateTbItem(params) {
     return axios.get(base.updateTbItem, { params });
   },
+
+  //产品列表分类
+  itemCategory() {
+    return axios.get(base.itemCategory);
+  }
+
 
   // /* 
   //   订单列表

@@ -11,12 +11,12 @@ const base ={
     search: "/api/goods/search",//搜索接口
     deleteItemById: "/api/goods/deleteItemById",//删除商品操作
     selectItemCategoryByParentId: "/api/goods/itemCategory/selectItemCategoryByParentId",//商品类目
-
-    //图片上传接口
-    uploadUrl: "/api/upload",
+    uploadUrl: "/api/upload",//图片上传接口
     insertTbItem: "/api/goods/item/insertTbItem",//添加商品
     batchDelete: "/api/goods/batchDelete",//批量删除
     updateTbItem: "/api/goods/item/updateTbItem",//修改商品
+    //产品分类
+    itemCategory: "/api/itemCategory",//产品类别
 
 
     //打包
