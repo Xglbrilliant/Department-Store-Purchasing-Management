@@ -26,6 +26,7 @@ npm i moment -S  //javascript time library
 npm i dayjs -S 
 npm install @wangeditor/editor --save
 npm install @wangeditor/editor-for-vue --save
+npm i vuex-persistedstate -S
 ```
 
 
