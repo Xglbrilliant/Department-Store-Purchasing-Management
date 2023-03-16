@@ -16,6 +16,7 @@ const base ={
     uploadUrl: "/api/upload",
     insertTbItem: "/api/goods/item/insertTbItem",//添加商品
     batchDelete: "/api/goods/batchDelete",//批量删除
+    updateTbItem: "/api/goods/item/updateTbItem",//修改商品
 
 
     //打包

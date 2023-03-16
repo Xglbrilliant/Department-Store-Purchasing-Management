@@ -55,6 +55,11 @@ const api = {
     return axios.get(base.batchDelete, { params });
   },
 
+  //修改商品  parms={id, title, image, sellPoint, price, cid, category, num, descs, paramsInfo}
+  updateTbItem(params) {
+    return axios.get(base.updateTbItem, { params });
+  },
+
   // /* 
   //   订单列表
   // */
