@@ -25,7 +25,6 @@
             :on-success="handleSuccess"
             :file-list="fileList"
             ref="upload"
-            :auto-upload="false"
             multiple>
             <i class="el-icon-plus"></i>
         </el-upload>

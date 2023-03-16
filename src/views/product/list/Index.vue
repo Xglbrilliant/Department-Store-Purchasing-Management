@@ -31,7 +31,11 @@
       cell-class-name="table-center" @select="selectHandle" @select-all="selectHandle"> 
         <el-table-column type="selection" width="55"> </el-table-column>
         <el-table-column prop="id" label="商品编号" width="100"></el-table-column>
-        <el-table-column prop="title" label="商品名称"></el-table-column>
+        <el-table-column prop="title" label="商品名称">
+          <template slot-scope="scope">
+            <span style="color:blue;cursor: pointer;"  @click="handleLook(scope.$index, scope.row)">{{ scope.row.title }}</span>
+          </template>
+        </el-table-column>
         <el-table-column prop="price" label="商品价格" width="100"></el-table-column>
         <el-table-column prop="category" label="商品类目"></el-table-column>
         <!-- 方法一：在视图上对添加时间处理 -->
@@ -70,6 +74,7 @@
 import Pagination from '@/components/pagination/pagination.vue'
 import moment from 'moment'
 import { removeHTMLTag } from '@/utils/common.js'
+import { mapMutations } from 'vuex'
 
 export default {
   components: {
@@ -91,8 +96,17 @@ export default {
   methods: {
     moment,  //注册方法
     removeHTMLTag,
+    ...mapMutations('product',['changeRowData','changeTitle','changeOperate']),
     // 进入添加商品页面
     toProductPage() {
+      this.changeTitle('添加');
+      this.changeOperate('添加');
+      this.$router.push('/product/add-product');
+    },
+    //查看商品详情
+    handleLook(index, row){
+      this.changeRowData(row);
+      this.changeTitle('详情');
       this.$router.push('/product/add-product');
     },
     //批量删除
@@ -154,7 +168,12 @@ export default {
     },
     //编辑操作
     handleEdit(index, row) {
-      console.log(index, row);
+      // console.log(index, row);
+      //把当前行的数据row存储到vuex中之后，并跳转到添加商品界面并获取vuex行数据row
+      this.changeRowData(row);
+      this.changeTitle('编辑');
+      this.changeOperate('保存');
+      this.$router.push('/product/add-product');
     },
     //删除操作
     handleDelete(index, row) {
@@ -194,7 +213,7 @@ export default {
       // console.log(arr);
       // console.log(this.tableData);
       // console.log(arr === this.tableData);
-      
+
       this.total = res.data.total
       this.pageSize = res.data.pageSize;
     },
