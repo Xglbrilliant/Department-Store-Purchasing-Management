@@ -17,6 +17,10 @@ const base ={
     updateTbItem: "/api/goods/item/updateTbItem",//修改商品
     //产品分类
     itemCategory: "/api/itemCategory",//产品类别
+    insertItemCategory: "/api/itemCategory/insertItemCategory", //新增子类目录名称 cid name
+    deleteContentCategoryById: "/api/content/deleteContentCategoryById", //删除类名 id
+    updateCategory: "/api/itemCategory/updateCategory", //修改类目 id name
+    insertCategory: "/api/itemCategory/insertCategory", //新增一级分类名称 name
 
 
     //打包

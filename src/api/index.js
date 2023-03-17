@@ -57,7 +57,27 @@ const api = {
   //产品列表分类
   itemCategory() {
     return axios.get(base.itemCategory);
-  }
+  },
+
+  //新增子级类目名称  parms={cid, name}
+  insertItemCategory(params) {
+    return axios.get(base.insertItemCategory, { params });
+  },
+
+  //删除类目  parms={id}
+  deleteContentCategoryById(params) {
+    return axios.get(base.deleteContentCategoryById, { params });
+  },
+
+  //修改类目名称  parms={id, name}
+  updateCategory(params) {
+    return axios.get(base.updateCategory, { params });
+  },
+
+  //新增一级分类名称  parms={name}
+  insertCategory(params) {
+    return axios.get(base.insertCategory, { params });
+  },
 
 
   // /* 
