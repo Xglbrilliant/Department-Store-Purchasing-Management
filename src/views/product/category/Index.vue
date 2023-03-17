@@ -4,15 +4,17 @@
       <div class="title">产品类目管理</div>
       <div class="tree">
         <!-- 一级按钮 -->
-        <el-button  type="warning" style="margin-bottom:20px;">新增一级导航类目</el-button>
+        <el-button  type="warning" style="margin-bottom:20px;" @click="addCategory">新增一级导航类目</el-button>
         <!-- tree内容结构 -->
         <el-tree :data="data" show-checkbox node-key="id" default-expand-all :expand-on-click-node="false"
           :render-content="renderContent" :props="defaultProps"></el-tree>
       </div>
     </div>
     <!-- 弹框 -->
-    <Dialog :info="info" ref="child"></Dialog>
-    <!-- <Dialog :info="info" ref="child" :type="type" @updateViews="itemCategory"></Dialog> -->
+    <!-- 刷新视图方法一：接收子组件的自定义事件，重新调用请求tree数据的方法来更新视图 -->
+    <Dialog :info="info" ref="child" :type="type" @updateViews="itemCategory"></Dialog>
+    <!-- 刷新视图方法二：在子组件中直接获取父组件实例（this.$parent）并调用其中的请求数据方法itemCategory -->
+    <!-- <Dialog :info="info" ref="child" :type="type"></Dialog> -->
   </div>
 </template>
 
@@ -47,26 +49,61 @@ export default {
     this.itemCategory();
   },
   methods: {
-    //新增 1. 显示弹框  2. 传递title动态
+    addCategory(data) {
+      this.$refs.child.dialogVisible = true;
+      this.info = {
+        title: `新增一级类目`,
+      };
+      this.type = 3;
+      this.$refs.child.input = '';
+    },
+    //新增子级类目 1. 显示弹框  2. 传递title动态  3. 修改type值 标识操作新增-修改 4. cid参数
     append(data) {
       // console.log(this.$refs.child.dialogVisible);
       this.$refs.child.dialogVisible = true;
       // console.log(data);
       this.info = {
         title: `新增${data.name}子级分类`,
+        cid: data.cid
       };
+      this.type = 1;
+      this.$refs.child.input = '';
     },
     //删除
-    remove() {
-
+    remove(node, data) {
+      this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.$api.deleteContentCategoryById({ id: data.id })
+          .then(res => {
+            // console.log(res.data);
+            if (res.data.status == 200) {
+              this.$message({
+                message: '恭喜你，删除成功',
+                type: 'success'
+              });
+              this.itemCategory();//刷新视图
+            }
+          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
-    //修改
+    //修改类目名称 1. 显示弹框  2. 传递title动态  3. 修改type值 4.把当前的名称传递给input  5. id参数
     update(node, data) {
       this.$refs.child.dialogVisible = true;
       // console.log(data);
       this.info = {
         title: `修改${data.name}分类名称`,
+        id: data.id
       };
+      this.type = 2;
+      this.$refs.child.input = data.name;
     },
     // 树节点的内容区的渲染 Function	Function(h, { node, data, store }
     renderContent(h, { node, data, store }) {
