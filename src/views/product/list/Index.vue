@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <!-- 1、面包屑 -->
-
+    <BreadCrumb></BreadCrumb>
     <!-- 2、产品搜索 -->
     <div class="header">
       <div class="form">

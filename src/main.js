@@ -9,7 +9,9 @@ import api from './api'
 Vue.prototype.$api = api;
 Vue.config.productionTip = false
 import JsonExcel from 'vue-json-excel'
-Vue.component('downloadExcel', JsonExcel)
+Vue.component('downloadExcel', JsonExcel);
+import  Breadcrumb  from '@/components/BreadCrumb/breadcrumb.vue'
+Vue.component('BreadCrumb', Breadcrumb);
 
 new Vue({
   router,

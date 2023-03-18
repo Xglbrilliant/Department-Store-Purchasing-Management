@@ -1,5 +1,6 @@
 <template>
   <div class=''>
+    <BreadCrumb></BreadCrumb>
     <h3>广告列表</h3>
   </div>
 </template>

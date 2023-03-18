@@ -1,5 +1,6 @@
 <template>
   <div class="category">
+    <BreadCrumb></BreadCrumb>
     <div class="wrapper">
       <div class="title">产品类目管理</div>
       <div class="tree">
