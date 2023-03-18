@@ -110,6 +110,34 @@ const routes = [
           },
         ]
       },
+      { 
+        path:'/system',
+        name:'system',
+        component: () => import('@/views/SystemMange/Index.vue'),
+        redirect:'/system/role',
+        meta:{
+          title:"系统管理",
+        },
+        children:[
+          {
+            path:'role',
+            name:'role',
+            component: () => import('@/views/SystemMange/role/Index.vue'),
+            meta:{
+              title:"角色管理",
+            },
+          },
+          {
+            path:'department',
+            name:'department',
+            component: () => import('@/views/SystemMange/department/Index.vue'),
+            meta:{
+              title:"部门管理",
+            },
+          }
+        ]
+    
+      },
     ]
   },
   {
