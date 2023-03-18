@@ -17,13 +17,14 @@
 
       <el-menu-item index="/">
         <i class="el-icon-menu"></i>
-        <span slot="title">首页</span>
+        <!-- <span slot="title">首页</span> -->
+        <span slot="title">{{ $t('menu.home') }}</span>
       </el-menu-item>
 
       <el-submenu index="/product">
         <template slot="title">
           <i class="el-icon-s-operation"></i>
-          <span>产品管理</span>
+          <span>{{ $t('menu.product') }}</span>
         </template>
         <el-menu-item-group>
           <el-menu-item index="/product/list">
@@ -40,7 +41,7 @@
       <el-submenu index="/order">
         <template slot="title">
           <i class="el-icon-position"></i>
-          <span>订单管理</span>
+          <span>{{ $t('menu.order') }}</span>
         </template>
         <el-menu-item-group>
           <el-menu-item index="/order/collect">
@@ -65,7 +66,7 @@
       <el-submenu index="/advert">
         <template slot="title">
           <i class="el-icon-document"></i>
-          <span>广告管理</span>
+          <span>{{ $t('menu.advert') }}</span>
         </template>
         <el-menu-item-group>
           <el-menu-item index="/advert/advert-list">
@@ -75,10 +76,24 @@
         </el-menu-item-group>
       </el-submenu>
 
-      <el-menu-item index="4">
+      <el-submenu index="/system">
+        <template slot="title">
         <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
+        <span slot="title">{{ $t('menu.system')}}</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/system/role">
+            <i class="el-icon-setting"></i>
+            <!-- <span slot="title">{{ $t('menu.system.role')}}</span> -->
+            <span slot="title">角色管理</span>
+          </el-menu-item>
+          <el-menu-item index="/system/department">
+            <i class="el-icon-setting"></i>
+            <!-- <span slot="title">{{ $t('menu.system.department')}}</span> -->
+            <span slot="title">部门管理</span>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
   </div>
 </template>

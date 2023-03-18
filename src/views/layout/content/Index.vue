@@ -10,13 +10,13 @@
       <!-- 右侧内容--时间 登录信息等 -->
       <div class="right">
         <span>{{ time }}</span> | 
-        <el-dropdown>
+        <el-dropdown @command="changeLang">
           <span class="el-dropdown-link" style="color:#fff">
             语言环境<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>中文</el-dropdown-item>
-            <el-dropdown-item>English</el-dropdown-item>
+            <el-dropdown-item command="zh">中文</el-dropdown-item>
+            <el-dropdown-item command="en">English</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
          | 
@@ -50,11 +50,11 @@ export default {
     changMenu() {
       this.$emit('changeShow')  //子传父自定义事件  content/Index.vue->layout/Index.vue
     },
-    // changeLang(val){
-    //   console.log(val);
-    //   console.log(this);
-    //   this.$i18n.locale=val;
-    // },
+    changeLang(val){
+      // console.log(val);
+      // console.log(this);
+      this.$i18n.locale=val;
+    },
     //退出登录  1. 删除vuex登录信息  2. 跳转登录界面  3. 清空菜单导航
     // loginOut(){
     //   //进入登录界面
