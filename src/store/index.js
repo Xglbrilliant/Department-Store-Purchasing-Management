@@ -7,10 +7,14 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isCollapse:false,//默认菜单栏不折叠
   },
   getters: {
   },
   mutations: {
+    changeIsCollapse(state,bool){
+      state.isCollapse = bool;
+    }
   },
   actions: {
   },
