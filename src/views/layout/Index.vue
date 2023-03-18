@@ -28,7 +28,7 @@ export default {
   methods: {
     changeShow() {
       this.isCollapse = !this.isCollapse;
-      // this.$store.commit('changeIsCollapse',this.isCollapse)
+      this.$store.commit('changeIsCollapse',this.isCollapse);//更改isCollapse的值后需要同步vuex中的值
     },
   },
 };
