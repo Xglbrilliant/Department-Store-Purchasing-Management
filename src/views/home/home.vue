@@ -154,7 +154,6 @@ export default {
       this.line2(arrX, yarr1, yarr2);
       this.pie(pieData);
     },
-    //
     //绘制图表--折线  其中line方法仅做说明使用
     line() {
       let myChart = echarts.init(document.getElementById("charts"));
