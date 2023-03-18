@@ -8,26 +8,7 @@ npm install
 npm run serve
 ```
 
-
 ### environment 
 
 node.js: 16.19.1, @vue/cli: 5.0.8
 Of course, you can choose cnpm： npm install -g cnpm --registry=https://registry.npm.taobao.org
-```js
-vue add element  //Fully import or Import on demand
-npm i -axios -S
-npm i querystring -S
-npm i normalize.css -S
-npm i echarts -S
-npm i express mysql -S
-npm i multer -S
-npm i mockjs -S
-npm i moment -S  //javascript time library
-npm i dayjs -S 
-npm install @wangeditor/editor --save
-npm install @wangeditor/editor-for-vue --save
-npm i vuex-persistedstate -S
-```
-
-
-
