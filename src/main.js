@@ -8,6 +8,8 @@ import '@/assets/css/base.css'
 import api from './api'
 Vue.prototype.$api = api;
 Vue.config.productionTip = false
+import JsonExcel from 'vue-json-excel'
+Vue.component('downloadExcel', JsonExcel)
 
 new Vue({
   router,
