@@ -21,6 +21,12 @@ const base ={
     deleteContentCategoryById: "/api/content/deleteContentCategoryById", //删除类名 id
     updateCategory: "/api/itemCategory/updateCategory", //修改类目 id name
     insertCategory: "/api/itemCategory/insertCategory", //新增一级分类名称 name
+    //订单管理
+    orderList:"/api/order/list",//订单列表 page
+    changeStatus:"/api/order/changeStatus",//订单汇总 
+    collect:"/api/order/collect",//汇总清单列表 page
+    cancel:'/api/order/cancel',//撤销汇总 id
+    detail:"/api/order/list/detail",//订单详情  id
 
 
     //打包

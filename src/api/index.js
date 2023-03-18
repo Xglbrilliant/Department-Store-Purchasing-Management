@@ -80,39 +80,37 @@ const api = {
   },
 
 
-  // /* 
-  //   订单列表
-  // */
-  //   orderList(params) {
-  //     return axios.get(base.orderList, { params });
-  //   },
-  // /* 
-  //   订单汇总---ids=''
-  //   */
-  // changeStatus(params) {
-  //   return axios.get(base.changeStatus, { params });
-  // },
-  // /* 
-  //   汇总清单
-  //   {page}
-  //    */
-  // collect(params) {
-  //   return axios.get(base.collect, { params });
-  // },
-  // /* 
-  //     撤销汇总
-  //     {id}
-  //   */
-  // cancel(params) {
-  //   return axios.get(base.cancel, { params });
-  // },
-  // /* 
-  //     订单详情
-  //     {id}
-  //   */
-  // getDetail(params) {
-  //   return axios.get(base.detail, { params });
-  // },
+  /*  订单列表 */
+  orderList(params) {
+    return axios.get(base.orderList, { params });
+  },
+  /* 
+    订单汇总---ids=''
+    */
+  changeStatus(params) {
+    return axios.get(base.changeStatus, { params });
+  },
+  /* 
+    汇总清单
+    {page}
+     */
+  collect(params) {
+    return axios.get(base.collect, { params });
+  },
+  /* 
+      撤销汇总
+      {id}
+    */
+  cancel(params) {
+    return axios.get(base.cancel, { params });
+  },
+  /* 
+      订单详情
+      {id}
+    */
+  getDetail(params) {
+    return axios.get(base.detail, { params });
+  },
   //登录
   // login,
 
