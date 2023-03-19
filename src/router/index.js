@@ -154,21 +154,21 @@ const router = new VueRouter({
   routes
 })
 
-import store from '@/store'
-// 配置路由全局前置守卫导航
-router.beforeEach((to, from, next) => {
-  // 判断进入的路由界面是否需要登录，若不需要则直接接进入
-  if(to.matched.some(ele => ele.meta.isLogin)) {//需要登录
-    console.log('为什么可以看见？');
-    // 判断是否已经登录（即token是否存在）
-    if(store.state.login.userinfo.token) {
-      next()
-    }else {
-      next('/login')
-    }
-  }else {
-    next()
-  }
-})
+// import store from '@/store'
+// // 配置路由全局前置守卫导航
+// router.beforeEach((to, from, next) => {
+//   // 判断进入的路由界面是否需要登录，若不需要则直接接进入
+//   if(to.matched.some(ele => ele.meta.isLogin)) {//需要登录
+//     console.log('为什么可以看见？');
+//     // 判断是否已经登录（即token是否存在）
+//     if(store.state.login.userinfo.token) {
+//       next()
+//     }else {
+//       next('/login')
+//     }
+//   }else {
+//     next()
+//   }
+// })
 
 export default router
