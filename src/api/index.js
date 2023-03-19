@@ -127,13 +127,12 @@ const api = {
 
 };
 //单个导出
-// export function permission(params){
-//   return axios.get(base.permission,{
-//     params
-//   })
-// }
+export function permission(params){
+  return axios.get(base.permission,{
+    params
+  })
+}
 // export { permission }
 
-//vue组件实例：this.$api.permission()
 //导出对象 api身上挂载了很多方法
 export default api;
