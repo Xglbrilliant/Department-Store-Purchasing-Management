@@ -27,6 +27,9 @@ const base ={
     collect:"/api/order/collect",//汇总清单列表 page
     cancel:'/api/order/cancel',//撤销汇总 id
     detail:"/api/order/list/detail",//订单详情  id
+    //登录
+    login: "/api/login", //登录接口 user pwd---post
+    permission: "/api/permission", //用户权限 token
 
 
     //打包

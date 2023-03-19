@@ -112,8 +112,17 @@ const api = {
     return axios.get(base.detail, { params });
   },
   //登录
-  // login,
-
+  // login,params={user: '',pwd: ''}
+  login(params) {
+    return axios.post(base.login, params);//get传参要加大括号，post则不需要
+  },
+  /* 
+      用户权限--返回导航内容
+      params={token:''}
+    */
+  permission(params) {
+    return axios.get(base.permission, { params });
+  }
 
 
 };
