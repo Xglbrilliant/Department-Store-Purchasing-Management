@@ -17,9 +17,7 @@
 
 (function (view) {
     "use strict";
-
     view.URL = view.URL || view.webkitURL;
-
     if (view.Blob && view.URL) {
         try {
             new Blob;
