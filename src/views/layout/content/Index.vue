@@ -20,8 +20,8 @@
           </el-dropdown-menu>
         </el-dropdown>
          | 
-        <span>欢迎 admin</span> | 
-        <span class="el-icon-switch-button icon"></span>
+        <span>欢迎{{ userinfo.username }}</span> | 
+        <span class="el-icon-switch-button icon" @click="loginOut"></span>
       </div>
     </div>
     <!-- 内容 -->
@@ -33,7 +33,7 @@
 <script>
 import dayjs from 'dayjs'
 // import { mapMutations, mapState } from 'vuex'
-
+import { mapState } from 'vuex'
 export default {
   props: ['isCollapse'],  //父传子props  layout/Index.vue->menu/Index.vue和content/Index.vue
   data() {
@@ -41,9 +41,9 @@ export default {
       time: ''
     };
   },
-  // computed:{
-  //   ...mapState('login',['userinfo'])
-  // },
+  computed:{
+    ...mapState('login',['userinfo'])
+  },
   methods: {
     // ...mapMutations('menu',['removeMenuList']),
     // ...mapMutations('login',['removeUser']),
@@ -56,17 +56,18 @@ export default {
       this.$i18n.locale=val;
     },
     //退出登录  1. 删除vuex登录信息  2. 跳转登录界面  3. 清空菜单导航
-    // loginOut(){
-    //   //进入登录界面
-    //   this.$router.replace('/login')
-    //   //清空菜单导航
-    //   this.removeMenuList();
-    //   //清空登录
-    //   this.removeUser()
-    //   // console.log('----退出登录----------------');
-    //   localStorage.removeItem('info') //删除有问题 需要单独删除模块名称  vuex持久化注意的 插件--
-    //   localStorage.removeItem('login')
-    // }
+    loginOut(){
+      // localStorage.removeItem('info');
+      //进入登录界面
+      this.$router.replace('/login');
+      // //清空菜单导航
+      // this.removeMenuList();
+      // //清空登录
+      // this.removeUser();
+      // // console.log('----退出登录----------------');
+      // localStorage.removeItem('info'); //删除有问题 需要单独删除模块名称  vuex持久化注意的 插件--
+      // localStorage.removeItem('login');
+    }
   },
   created() {
     // console.log(dayjs().format('YYYY-MM-DD HH:mm:ss'));
