@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import product from './modules/product.js'
 import createPersistedstate   from 'vuex-persistedstate'
 import login from './modules/login.js'
+import menu from './modules/menu.js'
 
 Vue.use(Vuex)
 
@@ -22,6 +23,7 @@ export default new Vuex.Store({
   modules: {
     product,
     login,
+    menu
   },
   //plugins:[] vuex插件-持久化 数组语法 多个插件名称
   plugins:[
