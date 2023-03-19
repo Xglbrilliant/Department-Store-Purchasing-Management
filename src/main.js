@@ -5,6 +5,7 @@ import store from './store'
 import './plugins/element.js'
 import 'normalize.css'
 import '@/assets/css/base.css'
+import './permission'
 import api from './api'
 Vue.prototype.$api = api;
 
