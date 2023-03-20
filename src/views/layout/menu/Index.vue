@@ -3,25 +3,20 @@
     <!-- router属性表示开启路由跳转，将index变成path，default-active="/"表示默认某个页面开启 -->
     <!-- 动态绑定default-active使得无论点击哪个导航都会有高亮展示 -->
     <!-- :default-active="$route.path"中$route.path会获得url上的地址 -->
-    <el-menu :default-active="active"
-      class="el-menu-vertical-demo"
-      background-color="#112f50"
-      text-color="#fff"
-      active-text-color="#ffd04b"
-      router
-      :collapse="isCollapse"
-    >
+    <el-menu :default-active="active" class="el-menu-vertical-demo" background-color="#112f50"
+      text-color="#fff" active-text-color="#ffd04b" :collapse="isCollapse">
       <el-menu-item>
         <span slot="title">万民百货采购管理系统</span>
       </el-menu-item>
 
-      <el-menu-item index="/">
+      <el-menu-item index="home" @click="toPage('home')" >
         <i class="el-icon-menu"></i>
         <!-- <span slot="title">首页</span> -->
         <span slot="title">{{ $t('menu.home') }}</span>
       </el-menu-item>
-
-      <el-submenu index="/product">
+      <!-- 动态菜单导航渲染组件 -->
+      <MenuList :dyMenuList="dyMenuList"></MenuList>
+      <!-- <el-submenu index="/product">
         <template slot="title">
           <i class="el-icon-s-operation"></i>
           <span>{{ $t('menu.product') }}</span>
@@ -84,47 +79,63 @@
         <el-menu-item-group>
           <el-menu-item index="/system/role">
             <i class="el-icon-setting"></i>
-            <!-- <span slot="title">{{ $t('menu.system.role')}}</span> -->
             <span slot="title">角色管理</span>
           </el-menu-item>
           <el-menu-item index="/system/department">
             <i class="el-icon-setting"></i>
-            <!-- <span slot="title">{{ $t('menu.system.department')}}</span> -->
             <span slot="title">部门管理</span>
           </el-menu-item>
         </el-menu-item-group>
-      </el-submenu>
+      </el-submenu> -->
     </el-menu>
   </div>
 </template>
 <script>
+import MenuList from './MenuList.vue'
+import { mapState } from 'vuex'
 export default {
   props: ["isCollapse"],
-  components: {},
+  components: {
+    MenuList
+  },
+  computed: {
+    ...mapState('menu', ['dyMenuList']),
+  },
   data() {
     return {
       // isCollapse:false
       active: ''
     };
   },
+  methods: {
+    toPage(name){
+      this.$router.push({
+        name
+      })
+    }
+  },
   created() {
     // console.log('menu', this.$route);
     if (this.$route.meta.activeMenu) {
-      this.active = this.$route.meta.activeMenu
+      this.active = this.$route.meta.activeMenu;
     } else {
-      this.active = this.$route.path
+      // this.active = this.$route.path;
+      this.active = this.$route.name;
     }
+    // console.log('动态菜单导航目录', this.dyMenuList);
   },
   watch: {
     $route(to, from) {
       // console.log('watch', to);
-      let { meta, path } = to;
+      // let { meta, path } = to;
+      let { meta, name } = to;
       // console.log(meta);
       // console.log(name);
       if(meta.activeMenu) {
         this.active = meta.activeMenu;
       }else {
-        this.active = path;
+        // this.active = path;
+        this.active = name;
       }
     }
   }
