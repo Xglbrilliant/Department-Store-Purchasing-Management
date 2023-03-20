@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     ...mapMutations('menu',['removeMenuList']),
-    // ...mapMutations('login',['removeUser']),
+    ...mapMutations('login',['removeUser']),
     changMenu() {
       this.$emit('changeShow')  //子传父自定义事件  content/Index.vue->layout/Index.vue
     },
@@ -60,8 +60,8 @@ export default {
       this.$router.replace('/login');
       //清空菜单导航
       this.removeMenuList();
-      // //清空登录
-      // this.removeUser();
+      //清空登录
+      this.removeUser();
       // console.log('退出登录');
       localStorage.removeItem('info'); //删除有问题 需要单独删除模块名称  这是vuex持久化插件需要注意的问题
       localStorage.removeItem('login');
