@@ -21,6 +21,7 @@ router.beforeEach((to, from, next) => {
       }else {
         store.dispatch("menu/getMenuList").then((mybaseRoutes) => {
           // console.log("没有导航----获取导航", mybaseRoutes);
+          resetRouter(); //添加路由之前 清空路由实例内容
           mybaseRoutes.forEach((ele) => {//把导航菜单追加到路由实例上
             router.addRoute(ele);
           });
