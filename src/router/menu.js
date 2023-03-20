@@ -1,120 +1,142 @@
-export const menu = [
-    {
-        path: '/product',
-        name: 'product',
-        component: () => import('@/views/product/Index.vue'),
-        redirect: '/product/list',//点击面包屑跳转时重定向
-        meta: {
-            title: '产品管理',
-        },
-        children: [
-            {
-                path: 'list',
-                name: 'list',
-                component: () => import('@/views/product/list/Index.vue'),
-                meta: {
-                    title: '产品列表',
-                },
-            },
-            {
-                path: 'category',  //加/跳转时会从站点的根目录开始寻找，而不加/则会从当前路径开始寻找
-                name: 'category',
-                component: () => import('@/views/product/category/Index.vue'),
-                meta: {
-                    title: '产品分类',
-                },
-            },
-            {
-                path: 'add-product',  //商品添加-编辑-查看
-                name: 'ProductPage',
-                component: () => import('@/views/product/list/AddProduct.vue'),
-                meta: {  //配置高亮标识
-                    activeMenu: '/product/list',
-                    title: '添加商品'
-                }
-            },
-        ]
-    },
-    {
-        path: '/order',
-        name: 'order',
-        component: () => import('@/views/order/Index.vue'),
-        redirect: '/order/collect',
-        meta: {
-            title: '订单管理',
-        },
-        children: [
-            {
-                path: 'collect',
-                name: 'collect',
-                component: () => import('@/views/order/collect/Index.vue'),
-                meta: {
-                    title: '汇总清单',
-                },
-            },
-            {
-                path: 'contract',
-                name: 'contract',
-                component: () => import('@/views/order/contract/Index.vue'),
-                meta: {
-                    title: '订单审核',
-                },
-            },
-            {
-                path: 'order-list',
-                name: 'orderList',
-                component: () => import('@/views/order/list/Index.vue'),
-                meta: {
-                    title: '订单列表',
-                },
-            },
-        ]
-    },
-    {
-        path: '/advert',
-        name: 'advert',
-        component: () => import('@/views/advert/Index.vue'),
-        // redirect: '/advert/list',
-        meta: {
-            title: '广告分类',
-        },
-        children: [
-            {
-                path: 'advert-list',
-                name: 'advertList',
-                component: () => import('@/views/advert/list/Index.vue'),
-                meta: {
-                    title: '广告列表',
-                },
-            },
-        ]
-    },
-    {
-        path: '/system',
-        name: 'system',
-        component: () => import('@/views/SystemMange/Index.vue'),
-        redirect: '/system/role',
-        meta: {
-            title: "系统管理",
-        },
-        children: [
-            {
-                path: 'role',
-                name: 'role',
-                component: () => import('@/views/SystemMange/role/Index.vue'),
-                meta: {
-                    title: "角色管理",
-                },
-            },
-            {
-                path: 'department',
-                name: 'department',
-                component: () => import('@/views/SystemMange/department/Index.vue'),
-                meta: {
-                    title: "部门管理",
-                },
-            }
-        ]
+/* 
+动态菜单-全部的菜单导航 除了首页登录
+*/
+//商品管理
+const Product = () => import("@/views/product/Index.vue");
+const List = () => import("@/views/product/list/Index.vue");
+const Category = () => import("@/views/product/category/Index.vue");
+const AddProduct =()=>import('@/views/product/list/AddProduct.vue')
+//订单
+const Order = () =>import('@/views/order/Index.vue')
+const OrderList = () =>import('@/views/order/list/Index.vue')
+const Collect = () =>import('@/views/order/collect/Index.vue')
+const Contract=()=>import('@/views/order/contract/Index.vue')
+//广告
+const Advert = () =>import('@/views/advert/Index.vue')
+const AdvertList = () =>import('@/views/advert/list/Index.vue')
 
+//系统管理
+import SystemManage from '@/views/SystemMange/Index.vue'
+import department from '@/views/SystemMange/department/Index.vue'
+import role from '@/views/SystemMange/role/Index.vue'
+
+export const menu = [
+  {
+    path: "/product", //产品管理
+    name: "product",
+    component: Product,
+    redirect: "/product/list",
+    meta: {
+      title: "产品管理",
     },
-]
+    children: [
+      {
+        path: "list", //访问路径： /product/list
+        name: "list",
+        component: List,
+        meta: {
+          title: "产品列表",
+        },
+      },
+      {
+        path: "category",
+        name: "category",
+        component: Category,
+        meta: {
+          title: "产品分类",
+        },
+      },
+      {
+        path: "add-product", //商品添加--编辑-查看  /product/product-page
+        name: "ProductPage",
+        component: AddProduct,
+        meta: {
+          //配置高亮标识
+          // activeMenu: "/product/list",//获取path
+          activeMenu: "list",//获取name
+          title: "添加商品",
+        },
+      },
+    ],
+  },
+  {
+    path: "/order", //订单管理
+    name: "order",
+    component: Order,
+    redirect: "/order/order-list",
+    meta: {
+      title: "订单管理",
+    },
+    children: [
+      {
+        path: "order-list",
+        name: "order-list",
+        component: OrderList,
+        meta: {
+          title: "订单列表",
+        },
+      },
+      {
+        path: "collect",
+        name: "collect",
+        component: Collect,
+        meta: {
+          title: "汇总清单",
+        },
+      },
+      {
+        path: "contract",
+        name: "contract",
+        component: Contract,
+        meta: {
+          title: "订单审核",
+        },
+      },
+    ],
+  },
+  {
+    path: "/advert", //广告管理
+    name: "advert",
+    component: Advert,
+    meta: {
+      title: "广告分类",
+    },
+    children: [
+      {
+        path: "advert-list",
+        name: "advert-list",
+        component: AdvertList,
+        meta: {
+          title: "广告列表",
+        },
+      },
+    ],
+  },
+  {
+    path: "/system",
+    name: "system",
+    component: SystemManage,
+    redirect: "/system/role",
+    meta: {
+      title: "系统管理",
+    },
+    children: [
+      {
+        path: "role",
+        name: "role",
+        component: role,
+        meta: {
+          title: "角色管理",
+        },
+      },
+      {
+        path: "department",
+        name: "department",
+        component: department,
+        meta: {
+          title: "部门管理",
+        },
+      },
+    ],
+  },
+];
