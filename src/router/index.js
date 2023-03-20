@@ -2,6 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/home/home.vue'
 
+//解决点击跳转同一个路径时会报错：在VueRouter上配置路由跳转，注意加在use之前
+const routerPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function (location) {
+    return routerPush.call(this, location).catch(err => {})
+};
+
 Vue.use(VueRouter)
 //路由信息 this.$route.matched=[{一级路由信息},{二级路由信息},...{当前路由信息}] 
 export const baseRoutes = [
@@ -168,11 +174,30 @@ export const routes = [
   },
 ]
 
-const router = new VueRouter({
+// const router = new VueRouter({
+//   mode: 'history',
+//   base: process.env.BASE_URL,
+//   routes
+// })
+
+/* 
+解决：退出登录再登录后 控制台路由命名重复警告问题
+  发现自己的name并没有重名,那么一般是后台动态路由导致的报错警告。
+  动态路由一般来说是通过后端接口返回拿到数据，然后在路由守卫router.beforeEach 中进行添加。
+  addRoutes 方法仅仅是帮我们注入新的路由，并没有剔除其它路由。
+*/
+
+const createRouter  =() => new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
+const router = createRouter()
+export function resetRouter () {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // the relevant part
+}
 
 // import store from '@/store'
 // // 配置路由全局前置守卫导航
