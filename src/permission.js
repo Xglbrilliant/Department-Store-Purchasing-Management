@@ -19,7 +19,12 @@ router.beforeEach((to, from, next) => {
       if (store.state.menu.dyMenuList.length != 0) {//有导航
         next();
       }else {
-        store.dispatch("menu/getMenuList");//获取导航
+        store.dispatch("menu/getMenuList").then(mybaseRoutes => {
+          // console.log("没有导航----获取导航", mybaseRoutes);
+          mybaseRoutes.forEach((ele) => {//把导航菜单追加到路由实例上
+            router.addRoute(ele);
+          });
+        })
       }
     } else {
       next("/login");

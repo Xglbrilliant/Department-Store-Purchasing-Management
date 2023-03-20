@@ -6,6 +6,7 @@ import { menu } from '@/router/menu'
 //导入路由 和基本的路由信息
 import router,{ baseRoutes } from '@/router/index'
 import { rulesMenu } from '@/utils/common'
+import { cloneDeep } from 'lodash'
 export default {
     namespaced: true,
     state: {
@@ -27,11 +28,16 @@ export default {
        async getMenuList({commit,rootState}){
           // console.log('rootState.login.userinfo.token',rootState.login.userinfo.token);
           let res = await permission({token:rootState.login.userinfo.token})
-          console.log('后端返回的导航菜单内容:----',res.data.data);
-          console.log('前端定义的导航菜单内容-----',menu);
+          // console.log('后端返回的导航菜单内容:----',res.data.data);
+          // console.log('前端定义的导航菜单内容-----',menu);
           //定义一个方法来处理前后端的菜单导航数组：根据后端返回的导航标识 匹配对应的真实的路由菜单导航
           let myMenu= rulesMenu(menu,res.data.data);//返回匹配好的菜单导航
-          console.log('处理好的菜单导航',myMenu);
+          // console.log('处理好的菜单导航',myMenu);
+          commit('setMenuList',myMenu);//存储动态菜单导航
+          //需要把匹配好的路由数据追加到 layout界面 baseRoutes=[{path:'/',name:Layout,childen:[{home},]}]
+          let mybaseRoutes = cloneDeep(baseRoutes);
+          mybaseRoutes[0].children.push(...myMenu);
+          return mybaseRoutes;//添加到路由界面
         }
     }
   };
