@@ -9,7 +9,7 @@
 //配置路由全局前置守卫导航
 import router from "@/router";
 import store from "@/store";
-
+import { resetRouter } from "@/router";
 router.beforeEach((to, from, next) => {
   // console.log("路由守卫", to); //{to.matched: []}
   //1、首先 判断进入的路由界面是否需要登录  不需要登录直接进入
