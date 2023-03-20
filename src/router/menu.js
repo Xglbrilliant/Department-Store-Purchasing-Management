@@ -30,7 +30,7 @@ export const menu = [
                 component: () => import('@/views/product/list/AddProduct.vue'),
                 meta: {  //配置高亮标识
                     activeMenu: '/product/list',
-                    title: '商品信息编辑'
+                    title: '添加商品'
                 }
             },
         ]
@@ -49,7 +49,7 @@ export const menu = [
                 name: 'collect',
                 component: () => import('@/views/order/collect/Index.vue'),
                 meta: {
-                    title: '订单汇总',
+                    title: '汇总清单',
                 },
             },
             {
@@ -76,7 +76,7 @@ export const menu = [
         component: () => import('@/views/advert/Index.vue'),
         // redirect: '/advert/list',
         meta: {
-            title: '广告管理',
+            title: '广告分类',
         },
         children: [
             {
