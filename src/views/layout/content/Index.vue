@@ -32,8 +32,7 @@
 </template>
 <script>
 import dayjs from 'dayjs'
-// import { mapMutations, mapState } from 'vuex'
-import { mapState } from 'vuex'
+import { mapMutations, mapState } from 'vuex'
 export default {
   props: ['isCollapse'],  //父传子props  layout/Index.vue->menu/Index.vue和content/Index.vue
   data() {
@@ -45,7 +44,7 @@ export default {
     ...mapState('login',['userinfo'])
   },
   methods: {
-    // ...mapMutations('menu',['removeMenuList']),
+    ...mapMutations('menu',['removeMenuList']),
     // ...mapMutations('login',['removeUser']),
     changMenu() {
       this.$emit('changeShow')  //子传父自定义事件  content/Index.vue->layout/Index.vue
@@ -57,16 +56,15 @@ export default {
     },
     //退出登录  1. 删除vuex登录信息  2. 跳转登录界面  3. 清空菜单导航
     loginOut(){
-      // localStorage.removeItem('info');
       //进入登录界面
       this.$router.replace('/login');
-      // //清空菜单导航
-      // this.removeMenuList();
+      //清空菜单导航
+      this.removeMenuList();
       // //清空登录
       // this.removeUser();
-      // // console.log('----退出登录----------------');
-      // localStorage.removeItem('info'); //删除有问题 需要单独删除模块名称  vuex持久化注意的 插件--
-      // localStorage.removeItem('login');
+      // console.log('退出登录');
+      localStorage.removeItem('info'); //删除有问题 需要单独删除模块名称  这是vuex持久化插件需要注意的问题
+      localStorage.removeItem('login');
     }
   },
   created() {
