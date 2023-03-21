@@ -111,8 +111,8 @@ const api = {
   getDetail(params) {
     return axios.get(base.detail, { params });
   },
-  // //登录
-  // // login,params={user: '',pwd: ''}
+  //登录
+  // login,params={user: '',pwd: ''}
   // login(params) {
   //   return axios.post(base.login, params);//get传参要加大括号，post则不需要
   // },
@@ -122,7 +122,7 @@ const api = {
   //   */
   // permission(params) {
   //   return axios.get(base.permission, { params });
-  // }
+  // },
   //登录
   login,
 
